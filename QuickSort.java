@@ -17,11 +17,11 @@ class QuickSort {
         System.out.println("Randomised Sort:");
         for (int i = 0; i < n; i++) {
 
-            long start = System.currentTimeMillis();
+            long start = System.nanoTime();
             ob.randomisedSort(arr, 0, n - 1);
             // System.out.println("sorted array");
             // printArray(arr);
-            long end = System.currentTimeMillis();
+            long end = System.nanoTime();
             time[i] = end - start;
         }
         int max = 0, min = 0, avg = (int) time[0];
@@ -47,11 +47,11 @@ class QuickSort {
         System.out.println("Deterministic Sort:");
         for (int i = 0; i < n; i++) {
             arr[i] = random.nextInt(100000);
-            long start = System.currentTimeMillis();
+            long start = System.nanoTime();
             ob.deterministicSort(arr, 0, n - 1);
             // System.out.println("sorted array");
             // printArray(arr);
-            long end = System.currentTimeMillis();
+            long end = System.nanoTime();
             time[i] = end - start;
         }
         max = 0;
