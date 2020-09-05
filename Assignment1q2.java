@@ -11,6 +11,7 @@ class Assignment1q2 {
 		}
 		Assignment1q2 ob = new Assignment1q2();
 		ob.checkBalanced(arr, adjacent);
+		sc.close();
 	}
 
 	void checkBalanced(int[] arr, int[] adjacent) {

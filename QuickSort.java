@@ -10,12 +10,15 @@ class QuickSort {
         System.out.println("Enter n: ");
         int n = sc.nextInt();
         int arr[] = new int[n];
-        long[] time = new long[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = random.nextInt(100000);
+        }
+        long[] time = new long[10];
 
         QuickSort ob = new QuickSort();
         // Randomised Quick Sort
         System.out.println("Randomised Sort:");
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < 10; i++) {
 
             long start = System.nanoTime();
             ob.randomisedSort(arr, 0, n - 1);
@@ -24,28 +27,28 @@ class QuickSort {
             long end = System.nanoTime();
             time[i] = end - start;
         }
-        int max = 0, min = 0, avg = (int) time[0];
+        int maxrandomised = 0, min = 0, avgrandomised = 0;
 
-        for (int i = 1; i < time.length; i++) {
-            System.out.println("Test Case " + i + ": " + time[i] + "ms");
+        for (int i = 0; i < time.length; i++) {
+            System.out.println("Test Case " + (i + 1) + ": " + time[i] + "ns");
             if (time[i] < time[min]) {
                 min = i;
             }
-            if (time[i] > time[max]) {
-                max = i;
+            if (time[i] > time[maxrandomised]) {
+                maxrandomised = i;
             }
 
-            avg += time[i];
+            avgrandomised += time[i];
         }
-        avg = avg / n;
-
-        System.out.println("\nBest Case: " + time[min] + "ms");
-        System.out.println("Worst Case: " + time[max] + "ms");
-        System.out.println("Average Case: " + avg + "ms\n");
+        avgrandomised = avgrandomised / 10;
+        System.out.println("\nRandomised Sort:");
+        System.out.println("\nBest Case: " + time[min] + "ns");
+        System.out.println("Worst Case: " + time[maxrandomised] + "ns");
+        System.out.println("Average Case: " + avgrandomised + "ns\n");
 
         // Deterministic Quick Sort
-        System.out.println("Deterministic Sort:");
-        for (int i = 0; i < n; i++) {
+
+        for (int i = 0; i < 10; i++) {
             arr[i] = random.nextInt(100000);
             long start = System.nanoTime();
             ob.deterministicSort(arr, 0, n - 1);
@@ -54,25 +57,31 @@ class QuickSort {
             long end = System.nanoTime();
             time[i] = end - start;
         }
-        max = 0;
+        int maxdeterministic = 0;
         min = 0;
-        avg = (int) time[0];
-        for (int i = 1; i < time.length; i++) {
-            System.out.println("Test Case " + i + ": " + time[i] + "ms");
+        int avgdeterministic = (int) time[0];
+        for (int i = 0; i < time.length; i++) {
+            System.out.println("Test Case " + (i + 1) + ": " + time[i] + "ns");
             if (time[i] < time[min]) {
                 min = i;
             }
-            if (time[i] > time[max]) {
-                max = i;
+            if (time[i] > time[maxdeterministic]) {
+                maxdeterministic = i;
             }
 
-            avg += time[i];
+            avgdeterministic += time[i];
         }
-        avg = avg / n;
+        avgdeterministic = avgdeterministic / 10;
+        System.out.println("\nDeterministic Sort:");
+        System.out.println("\nBest Case: " + time[min] + "ns");
+        System.out.println("Worst Case: " + time[maxdeterministic] + "ns");
+        System.out.println("Average Case: " + avgdeterministic + "ns");
+        if (avgdeterministic < avgrandomised) {
+            System.out.println("Conclusion: Deterministic Quick Sort is faster than Randomised Quick Sort");
+        } else {
+            System.out.println("Conclusion: Randomised Quick Sort is faster than Deterministic Quick Sort");
+        }
 
-        System.out.println("\nBest Case: " + time[min] + "ms");
-        System.out.println("Worst Case: " + time[max] + "ms");
-        System.out.println("Average Case: " + avg + "ms");
         sc.close();
     }
 
@@ -141,12 +150,12 @@ class QuickSort {
         }
     }
 
-    static void printArray(int arr[]) {
-        int n = arr.length;
-        for (int i = 0; i < n; ++i)
-            System.out.print(arr[i] + " ");
-        System.out.println();
-    }
+    // static void printArray(int arr[]) {
+    // int n = arr.length;
+    // for (int i = 0; i < n; ++i)
+    // System.out.print(arr[i] + " ");
+    // System.out.println();
+    // }
 
     // Driver code
 

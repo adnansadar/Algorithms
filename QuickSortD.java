@@ -25,25 +25,16 @@ class QuickSortD {
         return i + 1;
     }
 
-    void deterministicSort(int arr[], int low, int high) {
+    void sort(int arr[], int low, int high) {
         if (low < high) {
 
             int pi = partition(arr, low, high);
 
-            deterministicSort(arr, low, pi - 1);
-            deterministicSort(arr, pi + 1, high);
+            sort(arr, low, pi - 1);
+            sort(arr, pi + 1, high);
         }
     }
 
-    void randomisedSort(int arr[], int low, int high) {
-        if (low < high) {
-
-            int pi = partition(arr, low, high);
-
-            deterministicSort(arr, low, pi - 1);
-            deterministicSort(arr, pi + 1, high);
-        }
-    }
 
     static void printArray(int arr[]) {
         int n = arr.length;
@@ -57,19 +48,19 @@ class QuickSortD {
         Random random = new Random();
         System.out.println("Enter n: ");
         int n = sc.nextInt();
-        long startDeterministic = System.currentTimeMillis();
+        long start = System.nanoTime();
         int arr[] = new int[n];
         for (int i = 0; i < n; i++) {
             arr[i] = random.nextInt(100000);
         }
         QuickSortD ob = new QuickSortD();
-        ob.deterministicSort(arr, 0, n - 1);
+        ob.sort(arr, 0, n - 1);
 
         System.out.println("sorted array");
         printArray(arr);
-        long endDeterministic = System.currentTimeMillis();
-        System.out.println("Time Taken: " + (endDeterministic - startDeterministic) + "ms");
-        ob.randomisedSort(arr, 0, n - 1);
+        long end = System.nanoTime();
+        System.out.println("Time Taken: " + (end - start) + "ms");
+
         sc.close();
     }
 }

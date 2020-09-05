@@ -1,5 +1,28 @@
 class Assignment1Q1 {
-
+    public static void main(String[] args) {
+        // Given matrix mat[][]
+        int[][] mat1 = { { -6, -4, -1 }, { -3, 2, 4 }, { 2, 5, 8 } };
+        int[][] mat2 = { { -4, -3 }, { -2, -1 } };
+        System.out.println(
+                "The array: ");
+                for (int i = 0; i < mat1.length; i++) {
+                    for (int j = 0; j < mat1.length; j++) {
+                        System.out.print(mat1[i][j]+" ");
+                    }
+                    System.out.println();
+                }
+                System.out.println("Output: The sum from the largest submatrix is " + maxSubMatSum(mat1));
+        System.out.println(
+                "The array: ");
+                for (int i = 0; i < mat2.length; i++) {
+            for (int j = 0; j < mat2.length; j++) {
+                System.out.print(mat2[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("Output: The sum from the largest submatrix is " + maxSubMatSum(mat2));
+    }
+   
     // Function that finds the maximum
     // Sub-Matrix Sum
     static int maxSubMatSum(int[][] mat) {
@@ -58,14 +81,5 @@ class Assignment1Q1 {
 
         // Return the maximum sum
         return res;
-    }
-
-    // Driver Code
-    public static void main(String[] args) {
-        // Given matrix mat[][]
-        int[][] mat = { { -6, -4, -1 }, { -3, 2, 4 }, { 2, 5, 8 } };
-
-        // Function Call
-        System.out.println(maxSubMatSum(mat));
     }
 }
