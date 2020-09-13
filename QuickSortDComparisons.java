@@ -59,17 +59,13 @@ class QuickSortDComparisons {
     }
 
     void comparisons() {
+        System.out.println("No of comparisons of pair i,j:");
+        System.out.println("00\t 01\t 02\t 03\t 04\t 05\t 06\t 07\t 08\t 09");
         for (int i = 0; i < T.length; i++) {
             for (int j = 0; j < T.length; j++) {
-                System.out.println(T[i][j]);
+                System.out.print(T[i][j] + "\t ");
             }
+            System.out.println();
         }
     }
-
-    // static void printArray(int arr[]) {
-    //     int n = arr.length;
-    //     for (int i = 0; i < n; ++i)
-    //         System.out.print(arr[i] + " ");
-    //     System.out.println();
-    // }
 }
