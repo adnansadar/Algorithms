@@ -85,14 +85,24 @@ class QuickSort {
         sc.close();
     }
 
-    int randomisedPartition(int arr[], int low, int high) {
+    void random(int low, int high) {
+
         Random rand = new Random();
-        int pivot = rand.nextInt(high - low) + low;
+        int pivotrand = rand.nextInt(high - low) + low;
+
+        int temp1 = arr[pivotrand];
+        arr[pivotrand] = arr[high];
+        arr[high] = temp1;
+    }
+
+    int randomisedPartition(int arr[], int low, int high) {
+        int pivotrand = arr[high];
 
         int i = (low - 1); // index of smaller element
         for (int j = low; j < high; j++) {
-
-            if (arr[j] <= pivot) {
+            // If current element is smaller than or
+            // equal to pivot
+            if (arr[j] <= pivotrand) {
                 i++;
 
                 // swap arr[i] and arr[j]
@@ -100,14 +110,14 @@ class QuickSort {
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
-        }
-
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
-
-        return i + 1;
+            // swap arr[i+1] and arr[high] (or pivot)          
     }
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+
+    return i + 1;
+}
 
     void randomisedSort(int arr[], int low, int high) {
         if (low < high) {
@@ -118,11 +128,11 @@ class QuickSort {
     }
 
     int deterministicPartition(int arr[], int low, int high) {
-        int pivot = arr[high];
+        int pivotdet = arr[high];
         int i = (low - 1); // index of smaller element
         for (int j = low; j < high; j++) {
             // If current element is smaller than the pivot
-            if (arr[j] < pivot) {
+            if (arr[j] < pivotdet) {
                 i++;
 
                 // swap arr[i] and arr[j]
